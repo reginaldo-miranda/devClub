@@ -23,3 +23,14 @@ model User {
   age     String?
 
 }
+
+model Veiculos {
+   id      String @id @default(auto()) @map("_id") @db.ObjectId
+   marca   String?
+   modelo  String
+   ano     String?
+   cor     String?
+   placa   String @unique
+
+
+}
