@@ -20,6 +20,7 @@
   "homepage": "https://github.com/reginaldo-miranda/devClub#readme",
   "dependencies": {
     "@prisma/client": "^6.11.1",
+    "bson": "^6.10.4",
     "express": "^5.1.0"
   },
   "devDependencies": {
