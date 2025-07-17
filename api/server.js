@@ -12,9 +12,7 @@ app.listen(PORT, () => {
 });
 */
 
-
-
-app.use(express.json());
+app.use(express.json()); // cadastrar
 
 app.post('/usuarios',  async (req, res) => {
 
@@ -28,14 +26,14 @@ app.post('/usuarios',  async (req, res) => {
     res.status(201).json(req.body)
 })
 
-app.get('/usuarios', async (req, res) => {
+app.get('/usuarios', async (req, res) => {  // lista todos
 
     const users = await prisma.user.findMany();
     res.status(200).json(users)
 })
 
 
-app.put('/usuarios/:id',  async (req, res) => {
+app.put('/usuarios/:id',  async (req, res) => { // editar um registro
 
     await prisma.user.update({
       where:{
@@ -48,6 +46,15 @@ app.put('/usuarios/:id',  async (req, res) => {
            }
      })
       res.status(201).json(req.body)
+  })
+
+  app.delete('/usuarios/:id', async (req, res) => {  // deletar um registro
+    await prisma.user.delete({
+        where:{
+          id:req.params.id
+        }
+    })
+    res.status(200).json({message: 'usuário deletado com sucesso'})
   })
 
 
